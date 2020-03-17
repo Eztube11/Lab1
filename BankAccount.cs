@@ -28,18 +28,20 @@ namespace Lab1
             Console.WriteLine("Sent: " + deposit);
             Console.WriteLine("Current amount in the account: " + balance);
         }
+        
         public void Withdraw(decimal withdraw)
         {
-            balance = balance - withdraw;
-            Console.WriteLine("Withdraw: " + withdraw);
-            Console.WriteLine("Current amount in the account: " + balance);
-            if (!IsAccountEmpty())
-            {
-                balance = 0;
-                Console.WriteLine("Your Account is Empty");
+            if (withdraw > balance){
+                Console.WriteLine("Balance is not sufficient. Can't withdraw");
+            }
+            else {
+                Console.WriteLine("Withdraw: " + withdraw);
+                balance = balance - withdraw;
+                Console.WriteLine("Current amount in the account: " + balance);
             }
         }
-        public bool IsAccountEmpty()
+        
+        public bool IsBalanceGreaterZero()
         {
             return balance >= 0;
         }
